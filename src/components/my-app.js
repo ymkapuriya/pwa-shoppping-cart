@@ -180,17 +180,17 @@ class MyApp extends connect(store)(LitElement) {
       <!-- Drawer content -->
       <app-drawer .opened="${this._drawerOpened}" .persistent="${this._wideLayout}" @opened-changed="${this._drawerOpenedChanged}">
         <nav class="drawer-list">
-          <a ?selected="${this._page === 'view1'}" href="/view1">View One</a>
-          <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
-          <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
+          <a ?selected="${this._page === 'home'}" href="/home">Home</a>
+          <a ?selected="${this._page === 'counter'}" href="/counter">Counter</a>
+          <a ?selected="${this._page === 'cart'}" href="/cart">Cart</a>
         </nav>
       </app-drawer>
       
       <!-- Main content -->
       <main role="main" class="main-content">
-        <my-view1 class="page" ?active="${this._page === 'view1'}"></my-view1>
-        <my-view2 class="page" ?active="${this._page === 'view2'}"></my-view2>
-        <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
+        <main-home class="page" ?active="${this._page === 'home'}"></main-home>
+        <main-counter class="page" ?active="${this._page === 'counter'}"></main-counter>
+        <main-cart class="page" ?active="${this._page === 'cart'}"></main-cart>
         <my-view404 class="page" ?active="${this._page === 'view404'}"></my-view404>
       </main>
       

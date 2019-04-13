@@ -29,17 +29,18 @@ export const navigate = (path) => (dispatch) => {
 
 const loadPage = (page) => (dispatch) => {
   switch (page) {
-    case 'view1':
-      import('../components/my-view1.js').then((module) => {
-        // Put code in here that you want to run every time when
-        // navigating to view1 after my-view1.js is loaded.
-      });
+    case 'home':
+      import('../components/main/main-home.js')
+        .then((module) => {
+          // Put code in here that you want to run every time when
+          // navigating to view1 after my-view1.js is loaded.
+        });
       break;
-    case 'view2':
-      import('../components/my-view2.js');
+    case 'counter':
+      import('../components/main/main-counter.js');
       break;
-    case 'view3':
-      import('../components/my-view3.js');
+    case 'cart':
+      import('../components/main/main-cart.js');
       break;
     default:
       page = 'view404';
