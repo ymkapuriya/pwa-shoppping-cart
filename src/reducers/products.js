@@ -14,7 +14,7 @@ import {
   REMOVE_FROM_CART,
   CHECKOUT_SUCCESS,
   CHECKOUT_FAILURE
-} from '../actions/shop.js';
+} from '../actions/products.js';
 import { createSelector } from 'reselect';
 
 const INITIAL_STATE = {
@@ -134,7 +134,7 @@ export const cartItemsSelector = createSelector(
   (cart, products) => {
     return Object.keys(cart).map(id => {
       const item = products[id];
-      return {id: item.id, title: item.title, amount: cart[id], price: item.price};
+      return {id: item.id, category: item.category, title: item.title, quantity: cart[id], price: item.price};
     });
   }
 );

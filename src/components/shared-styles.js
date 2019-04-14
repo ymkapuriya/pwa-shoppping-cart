@@ -21,8 +21,7 @@ export const SharedStyles = css`
     background: var(--app-section-odd-color);
   }
 
-  section > * {
-    max-width: 600px;
+  section > * {    
     margin-right: auto;
     margin-left: auto;
   }

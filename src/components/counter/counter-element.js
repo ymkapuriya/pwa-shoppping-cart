@@ -14,7 +14,7 @@ import { LitElement, html, css } from 'lit-element';
 import { plusIcon, minusIcon } from '../my-icons.js';
 
 // These are the shared styles needed by this element.
-import { ButtonSharedStyles } from '../button-shared-styles.js';
+import { ButtonSharedStyles } from '../shared-styles-button.js';
 
 // This is a reusable element. It is not connected to the store. You can
 // imagine that it could just as well be a third-party element that you

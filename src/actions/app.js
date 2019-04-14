@@ -17,7 +17,7 @@ export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 
 export const navigate = (path) => (dispatch) => {
   // Extract the page name from path.
-  const page = path === '/' ? 'view1' : path.slice(1);
+  const page = path === '/' ? 'home' : path.slice(1);
 
   // Any other info you might want to extract from the path (like page type),
   // you can do here
@@ -33,7 +33,7 @@ const loadPage = (page) => (dispatch) => {
       import('../components/main/main-home.js')
         .then((module) => {
           // Put code in here that you want to run every time when
-          // navigating to view1 after my-view1.js is loaded.
+          // navigating to home after main-home.js is loaded.
         });
       break;
     case 'counter':
@@ -41,6 +41,9 @@ const loadPage = (page) => (dispatch) => {
       break;
     case 'cart':
       import('../components/main/main-cart.js');
+      break;
+    case 'products':
+      import('../components/main/main-products.js');
       break;
     default:
       page = 'view404';
@@ -86,7 +89,7 @@ export const updateLayout = (wideLayout) => (dispatch, getState) => {
   })
   // Open the drawer when we are switching to wide layout and close it when we are
   // switching to narrow.
-  dispatch(updateDrawerState(wideLayout));
+  //dispatch(updateDrawerState(wideLayout));
 };
 
 export const updateDrawerState = (opened) => (dispatch, getState) => {

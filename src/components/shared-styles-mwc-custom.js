@@ -8,26 +8,21 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { LitElement, html } from 'lit-element';
+import { css } from 'lit-element';
 
-// This element is *not* connected to the Redux store.
-class ShopItem extends LitElement {
-  static get properties() {
-    return {
-      name: { type: String },
-      amount: { type: String },
-      price: { type: String }
-    };
-  }
+export const MWCSharedStyleCustom = css`
 
-  render() {
-    return html`
-      ${this.name}:
-      <span ?hidden="${this.amount === 0}">${this.amount} * </span>
-      $${this.price}
-      </span>
-    `;
-  }
-}
-
-window.customElements.define('shop-item', ShopItem);
+    .card__primary{
+        padding: 1rem;
+    }
+    .card__secondary{
+        padding: 0 1rem 8px;
+    }
+    .card__title{
+        margin:0;
+        text-align:left;
+    }
+    .card__subtitle{
+        margin:0;
+    }
+`;

@@ -15,18 +15,20 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { store } from '../../store.js';
 
 // These are the elements needed by this element.
-import './shop-item.js';
+import './prod-brief.js';
+import { Button } from '@material/mwc-button';
 
 // These are the actions needed by this element.
-import { getAllProducts, addToCart } from '../../actions/shop.js';
-
-// These are the elements needed by this element.
-import { addToCartIcon } from '../my-icons.js';
+import { getAllProducts } from '../../actions/products.js';
 
 // These are the shared styles needed by this element.
-import { ButtonSharedStyles } from '../button-shared-styles.js';
+import { SharedStyles } from '../shared-styles.js';
+import { ButtonSharedStyles } from '../shared-styles-button.js';
+import { MWCSharedStyle } from '../shared-styles-mwc.js';
+import { MWCSharedStyleCustom } from '../shared-styles-mwc-custom.js';
 
-class ShopProducts extends connect(store)(LitElement) {
+
+class ProductList extends connect(store)(LitElement) {
   static get properties() {
     return {
       _products: { type: Object }
@@ -35,7 +37,10 @@ class ShopProducts extends connect(store)(LitElement) {
 
   static get styles() {
     return [
+      SharedStyles,
       ButtonSharedStyles,
+      MWCSharedStyle,
+      MWCSharedStyleCustom,
       css`
         :host {
           display: block;
@@ -46,30 +51,23 @@ class ShopProducts extends connect(store)(LitElement) {
 
   render() {
     return html`
-      ${Object.keys(this._products).map((key) => {
-        const item = this._products[key];
-        return html`
-          <div>
-            <shop-item name="${item.title}" amount="${item.inventory}" price="${item.price}"></shop-item>
-            <button
-                .disabled="${item.inventory === 0}"
-                @click="${this._addButtonClicked}"
-                data-index="${item.id}"
-                title="${item.inventory === 0 ? 'Sold out' : 'Add to cart' }">
-              ${item.inventory === 0 ? 'Sold out': addToCartIcon }
-            </button>
-          </div>
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        ${Object.keys(this._products).map((key) => {
+          const item = this._products[key];
+          return html`        
+            <div class="mdc-layout-grid__cell--span-3">
+              <product-brief id="${item.id}" category="${item.category}" name="${item.title}" stock="${item.stock}" price="${item.price}" photo="${item.photo}"></product-brief>
+            </div>
         `;
       })}
+      </div>
+    </div>
     `;
   }
 
   firstUpdated() {
     store.dispatch(getAllProducts());
-  }
-
-  _addButtonClicked(e) {
-    store.dispatch(addToCart(e.currentTarget.dataset['index']));
   }
 
   // This is called every time something is updated in the store.
@@ -78,4 +76,4 @@ class ShopProducts extends connect(store)(LitElement) {
   }
 }
 
-window.customElements.define('shop-products', ShopProducts);
+window.customElements.define('product-list', ProductList);

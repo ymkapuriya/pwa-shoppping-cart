@@ -19,6 +19,13 @@ export const ButtonSharedStyles = css`
     cursor: pointer;
   }
 
+  .pink {
+    --mdc-theme-on-primary: white;
+    --mdc-theme-primary: #e9437a;
+    --mdc-theme-on-secondary: white;
+    --mdc-theme-secondary: #e9437a;
+  }
+
   button:hover svg {
     fill: var(--app-primary-color);
   }

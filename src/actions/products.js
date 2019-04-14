@@ -15,11 +15,11 @@ export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
 export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE';
 
 const PRODUCT_LIST = [
-  {"id": 1, "title": "Cabot Creamery Extra Sharp Cheddar Cheese", "price": 10.99, "inventory": 2},
-  {"id": 2, "title": "Cowgirl Creamery Mt. Tam Cheese", "price": 29.99, "inventory": 10},
-  {"id": 3, "title": "Tillamook Medium Cheddar Cheese", "price": 8.99, "inventory": 5},
-  {"id": 4, "title": "Point Reyes Bay Blue Cheese", "price": 24.99, "inventory": 7},
-  {"id": 5, "title": "Shepherd's Halloumi Cheese", "price": 11.99, "inventory": 3}
+  { "id": 1, "category": "Category 1", "title": "Product 1", "price": 10.99, "stock": 2, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/1.jpg' },
+  { "id": 2, "category": "Category 2", "title": "Product 2", "price": 29.99, "stock": 10, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg' },
+  { "id": 3, "category": "Category 1", "title": "Product 3", "price": 8.99, "stock": 5, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/3.jpg' },
+  { "id": 4, "category": "Category 2", "title": "Product 4", "price": 24.99, "stock": 7, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/4.jpg' },
+  { "id": 5, "category": "Category 1", "title": "Product 5", "price": 11.99, "stock": 3, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/5.jpg' },
 ];
 
 export const getAllProducts = () => (dispatch) => {
@@ -55,11 +55,11 @@ export const checkout = () => (dispatch) => {
   }
 };
 
-export const addToCart = (productId) => (dispatch, getState) =>{
+export const addToCart = (productId) => (dispatch, getState) => {
   const state = getState();
   // Just because the UI thinks you can add this to the cart
-  // doesn't mean it's in the inventory (user could've fixed it);
-  if (state.shop.products[productId].inventory > 0) {
+  // doesn't mean it's in the stock (user could've fixed it);
+  if (state.shop.products[productId].stock > 0) {
     dispatch(addToCartUnsafe(productId));
   }
 };

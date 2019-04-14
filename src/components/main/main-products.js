@@ -11,8 +11,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 import { html, css } from 'lit-element';
 import { PageViewElement } from '../page-view-element.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
-import "@material/mwc-button/mwc-button";
 
+// mwc components
+import { Button } from '@material/mwc-button';
+import { Ripple } from '@material/mwc-ripple';
 
 // This element is connected to the Redux store.
 import { store } from '../../store.js';
@@ -27,16 +29,15 @@ store.addReducers({
 });
 
 // These are the elements needed by this element.
-import '../cart/cart-items.js';
+import '../products/prod-list.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../shared-styles.js';
 import { ButtonSharedStyles } from '../shared-styles-button.js';
 import { MWCSharedStyle } from '../shared-styles-mwc.js';
 import { MWCSharedStyleCustom } from '../shared-styles-mwc-custom.js';
-import { addToCartIcon } from '../my-icons.js';
 
-class MainViewCart extends connect(store)(PageViewElement) {
+class MainViewProducts extends connect(store)(PageViewElement) {
   static get properties() {
     return {
       // This is the data from the store.
@@ -52,39 +53,27 @@ class MainViewCart extends connect(store)(PageViewElement) {
       MWCSharedStyle,
       MWCSharedStyleCustom,
       css`
-        .cart,
-        .cart svg {
-          fill: var(--app-primary-color);
-          width: 64px;
-          height: 64px;
+        button {
+          border: 2px solid var(--app-dark-text-color);
+          border-radius: 3px;
+          padding: 8px 16px;
         }
 
-        .circle.small {
-          margin-top: -72px;
-          width: 28px;
-          height: 28px;
-          font-size: 16px;
-          font-weight: bold;
-          line-height: 30px;
+        button:hover {
+          border-color: var(--app-primary-color);
+          color: var(--app-primary-color);
         }
       `
     ];
   }
 
   render() {
-    return html`      
+    return html`
       <section>
-        <div class="cart">
-          ${addToCartIcon}
-          <div class="circle small">
-            ${this._quantity}
-          </div>
-        </div>
-        <mwc-button label="Checkout" outlined ?disabled="${this._quantity == 0}" @click="${this._checkoutButtonClicked}"></mwc-button>
+        <h2>Products</h2>
       </section>
       <section>
-        <cart-items></cart-items>        
-        <div>${this._error}</div>
+        <product-list></product-list>
       </section>
     `;
   }
@@ -100,4 +89,4 @@ class MainViewCart extends connect(store)(PageViewElement) {
   }
 }
 
-window.customElements.define('main-cart', MainViewCart);
+window.customElements.define('main-products', MainViewProducts);
