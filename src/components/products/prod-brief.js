@@ -67,6 +67,7 @@ class ProductBrief extends LitElement {
         <div class="card__secondary">
           <div class="mdc-typography mdc-typography--body2">
             Price : ${this.price} Rs.
+            Stock : ${this.stock}
           </div>
         </div>
       </div>

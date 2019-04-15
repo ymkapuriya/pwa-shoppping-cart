@@ -49,7 +49,7 @@ const shop = (state = INITIAL_STATE, action) => {
   }
 };
 
-// Slice reducer: it only reduces the bit of the state it's concerned about.
+// Slice reducer: it only reduces the bit of the state (products) it's concerned about.
 const products = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART:
@@ -64,23 +64,25 @@ const products = (state, action) => {
   }
 };
 
+// Slice reducer: it only reduces the bit of the state (product) it's concerned about.
 const product = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       return {
         ...state,
-        inventory: state.inventory - 1
+        stock: state.stock - 1
       };
     case REMOVE_FROM_CART:
       return {
         ...state,
-        inventory: state.inventory + 1
+        stock: state.stock + 1
       };
     default:
       return state;
   }
 };
 
+// Slice reducer: it only reduces the bit of the state (cart) it's concerned about.
 const cart = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART:

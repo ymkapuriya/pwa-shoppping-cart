@@ -78,10 +78,6 @@ class MainViewProducts extends connect(store)(PageViewElement) {
     `;
   }
 
-  _checkoutButtonClicked() {
-    store.dispatch(checkout());
-  }
-
   // This is called every time something is updated in the store.
   stateChanged(state) {
     this._quantity = cartQuantitySelector(state);
