@@ -27,7 +27,7 @@ import { MWCSharedStyleCustom } from '../shared-styles-mwc-custom.js';
 class CartItem extends LitElement {
   static get properties() {
     return {
-      id: { type: Number },
+      id: { type: String },
       name: { type: String },
       category: { type: String },
       quantity: { type: Number },

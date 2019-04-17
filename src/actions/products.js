@@ -15,11 +15,11 @@ export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
 export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE';
 
 const PRODUCT_LIST = [
-  { "id": 1, "category": "Category 1", "title": "Product 1", "price": 10.99, "stock": 2, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/1.jpg' },
-  { "id": 2, "category": "Category 2", "title": "Product 2", "price": 29.99, "stock": 10, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg' },
-  { "id": 3, "category": "Category 1", "title": "Product 3", "price": 8.99, "stock": 5, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/3.jpg' },
-  { "id": 4, "category": "Category 2", "title": "Product 4", "price": 24.99, "stock": 7, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/4.jpg' },
-  { "id": 5, "category": "Category 1", "title": "Product 5", "price": 11.99, "stock": 3, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/5.jpg' },
+  { "id": "P1", "category": "Category 1", "title": "Product 1", "price": 10.99, "stock": 2, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/1.jpg' },
+  { "id": "P2", "category": "Category 2", "title": "Product 2", "price": 29.99, "stock": 10, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg' },
+  { "id": "P3", "category": "Category 1", "title": "Product 3", "price": 8.99, "stock": 5, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/3.jpg' },
+  { "id": "P4", "category": "Category 2", "title": "Product 4", "price": 24.99, "stock": 7, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/4.jpg' },
+  { "id": "P5", "category": "Category 1", "title": "Product 5", "price": 11.99, "stock": 3, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/5.jpg' },
 ];
 
 export const getAllProducts = () => (dispatch) => {
@@ -27,16 +27,39 @@ export const getAllProducts = () => (dispatch) => {
   // that by dispatching an async action (that you would dispatch when you
   // succesfully got the data back)
 
-  // You could reformat the data in the right format as well:
-  const products = PRODUCT_LIST.reduce((obj, product) => {
-    obj[product.id] = product
-    return obj
-  }, {});
+  const options = {
+    method: "GET",
+    mode: "cors"
+  }
 
-  dispatch({
-    type: GET_PRODUCTS,
-    products
-  });
+  fetch('http://127.0.0.1:3000/products', options)
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (json) {
+      let serverProducts = json.products
+      /*
+      // You could reformat the data in the right format as well:
+      const products = PRODUCT_LIST.reduce((obj, product) => {
+        obj[product.id] = product
+        return obj
+      }, {});
+      */
+
+      // You could reformat the data in the right format as well:
+      const products = serverProducts.reduce((obj, product) => {
+        obj[product.id] = product
+        return obj
+      }, {});
+
+      dispatch({
+        type: GET_PRODUCTS,
+        products
+      });
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
 };
 
 export const checkout = () => (dispatch) => {

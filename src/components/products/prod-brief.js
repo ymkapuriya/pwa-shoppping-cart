@@ -28,7 +28,7 @@ import { addToCart } from '../../actions/products.js';
 class ProductBrief extends LitElement {
   static get properties() {
     return {
-      id: { type: Number },
+      id: { type: String },
       name: { type: String },
       category: { type: String },
       stock: { type: Number },
