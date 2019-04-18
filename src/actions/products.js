@@ -14,6 +14,8 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
 export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE';
 
+import {initFirestore, testFirestore} from "../helpers/firestore"
+
 const PRODUCT_LIST = [
   { "id": "P1", "category": "Category 1", "title": "Product 1", "price": 10.99, "stock": 2, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/1.jpg' },
   { "id": "P2", "category": "Category 2", "title": "Product 2", "price": 29.99, "stock": 10, 'photo': 'https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg' },
@@ -31,6 +33,9 @@ export const getAllProducts = () => (dispatch) => {
     method: "GET",
     mode: "cors"
   }
+
+  let db = initFirestore()
+  testFirestore(db, { title : 'Test', comment : 'Commnet'})
 
   fetch('http://127.0.0.1:3000/products', options)
     .then(function (response) {
