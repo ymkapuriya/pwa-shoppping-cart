@@ -14,7 +14,7 @@ import {
   REMOVE_FROM_CART,
   CHECKOUT_SUCCESS,
   CHECKOUT_FAILURE
-} from '../actions/products.js';
+} from './actions.js';
 import { createSelector } from 'reselect';
 
 const INITIAL_STATE = {

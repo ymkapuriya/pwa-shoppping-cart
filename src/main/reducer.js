@@ -15,7 +15,7 @@ import {
   OPEN_SNACKBAR,
   CLOSE_SNACKBAR,
   UPDATE_DRAWER_STATE
-} from '../actions/app.js';
+} from './actions';
 
 const INITIAL_STATE = {
   page: '',

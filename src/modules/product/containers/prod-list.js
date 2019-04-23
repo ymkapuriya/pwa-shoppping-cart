@@ -9,23 +9,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { LitElement, html, css } from 'lit-element';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+import { connect } from 'pwa-helpers/connect-mixin';
 
 // This element is connected to the Redux store.
-import { store } from '../../store.js';
+import { store } from '../../../store';
 
 // These are the elements needed by this element.
-import './prod-brief.js';
+import '../components/prod-brief';
 import { Button } from '@material/mwc-button';
 
 // These are the actions needed by this element.
-import { getAllProducts } from '../../actions/products.js';
+import { getAllProducts } from '../actions';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from '../shared-styles.js';
-import { ButtonSharedStyles } from '../shared-styles-button.js';
-import { MWCSharedStyle } from '../shared-styles-mwc.js';
-import { MWCSharedStyleCustom } from '../shared-styles-mwc-custom.js';
+import { SharedStyles } from '../../../shared/styles/shared-styles';
+import { ButtonSharedStyles } from '../../../shared/styles/button';
+import { MWCSharedStyle } from '../../../shared/styles/mwc';
+import { MWCSharedStyleCustom } from '../../../shared/styles/mwc-custom';
 
 
 class ProductList extends connect(store)(LitElement) {

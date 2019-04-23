@@ -8,28 +8,26 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { INCREMENT, DECREMENT } from '../actions/counter.js';
+import { html } from 'lit-element';
+import { PageViewElement } from '../page-view-element';
 
-const INITIAL_STATE = {
-  clicks: 0,
-  value: 0
-};
+// These are the shared styles needed by this element.
+import { SharedStyles } from '../../shared/styles/shared-styles';
 
-const counter = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case INCREMENT:
-      return {
-        clicks: state.clicks + 1,
-        value: state.value + 1
-      };
-    case DECREMENT:
-      return {
-        clicks: state.clicks + 1,
-        value: state.value - 1
-      };
-    default:
-      return state;
+class MainViewHome extends PageViewElement {
+  static get styles() {
+    return [
+      SharedStyles
+    ];
   }
-};
 
-export default counter;
+  render() {
+    return html`
+      <section>
+        <h2>Home Page</h2>
+      </section>
+    `;
+  }
+}
+
+window.customElements.define('main-home', MainViewHome);

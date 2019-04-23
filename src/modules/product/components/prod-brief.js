@@ -12,17 +12,16 @@ import { LitElement, html, css } from 'lit-element';
 import "@material/mwc-button/mwc-button";
 
 // This element is connected to the Redux store.
-import { store } from '../../store.js';
+import { store } from '../../../store';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from '../shared-styles.js';
-import { ButtonSharedStyles } from '../shared-styles-button.js';
-import { MWCSharedStyle } from '../shared-styles-mwc.js';
-import { MWCSharedStyleCustom } from '../shared-styles-mwc-custom.js';
+import { SharedStyles } from '../../../shared/styles/shared-styles.js';
+import { ButtonSharedStyles } from '../../../shared/styles/button.js';
+import { MWCSharedStyle } from '../../../shared/styles/mwc.js';
+import { MWCSharedStyleCustom } from '../../../shared/styles/mwc-custom.js';
 
 // These are the actions needed by this element.
-import { addToCart } from '../../actions/products.js';
-
+import { addToCart } from '../../product/actions';
 
 // This element is *not* connected to the Redux store.
 class ProductBrief extends LitElement {

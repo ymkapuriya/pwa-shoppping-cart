@@ -11,17 +11,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 import { LitElement, html, css } from 'lit-element';
 
 // This element is connected to the Redux store.
-import { store } from '../../store.js';
+import { store } from '../../../store';
 
 // These are the actions needed by this element.
-import { removeFromCart } from '../../actions/products.js';
+import { removeFromCart } from '../../product/actions';
 
 // This element is connected to the Redux store.
-import { removeFromCartIcon } from '../my-icons.js';
+import { removeFromCartIcon } from '../../../shared/styles/icons';
 
 // These are the shared styles needed by this element.
-import { MWCSharedStyle } from '../shared-styles-mwc.js';
-import { MWCSharedStyleCustom } from '../shared-styles-mwc-custom.js';
+import { MWCSharedStyle } from '../../../shared/styles/mwc';
+import { MWCSharedStyleCustom } from '../../../shared/styles/mwc-custom';
 
 // This element is *not* connected to the Redux store.
 class CartItem extends LitElement {

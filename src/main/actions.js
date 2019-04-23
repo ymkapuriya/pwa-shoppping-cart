@@ -30,24 +30,24 @@ export const navigate = (path) => (dispatch) => {
 const loadPage = (page) => (dispatch) => {
   switch (page) {
     case 'home':
-      import('../components/main/main-home.js')
+      import('./components/main-home')
         .then((module) => {
           // Put code in here that you want to run every time when
           // navigating to home after main-home.js is loaded.
         });
       break;
     case 'counter':
-      import('../components/main/main-counter.js');
+      import('./components/main-counter');
       break;
     case 'cart':
-      import('../components/main/main-cart.js');
+      import('./components/main-cart');
       break;
     case 'products':
-      import('../components/main/main-products.js');
+      import('./components/main-products');
       break;
     default:
       page = 'view404';
-      import('../components/my-view404.js');
+      import('../shared/components/404');
   }
 
   dispatch(updatePage(page));

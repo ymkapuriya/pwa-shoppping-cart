@@ -9,12 +9,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { html } from 'lit-element';
-import { PageViewElement } from '../page-view-element.js';
+import { PageViewElement } from '../../main/page-view-element';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from '../shared-styles.js';
+import { SharedStyles } from '../styles/shared-styles';
 
-class MainViewHome extends PageViewElement {
+class View404 extends PageViewElement {
   static get styles() {
     return [
       SharedStyles
@@ -24,10 +24,14 @@ class MainViewHome extends PageViewElement {
   render() {
     return html`
       <section>
-        <h2>Home Page</h2>
+        <h2>Oops! You hit a 404</h2>
+        <p>
+          The page you're looking for doesn't seem to exist. Head back
+          <a href="/">home</a> and try again?
+        </p>
       </section>
-    `;
+    `
   }
 }
 
-window.customElements.define('main-home', MainViewHome);
+window.customElements.define('view-404', View404);

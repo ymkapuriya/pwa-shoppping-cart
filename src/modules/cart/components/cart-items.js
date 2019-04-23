@@ -12,18 +12,18 @@ import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 
 // This element is connected to the Redux store.
-import { store } from '../../store.js';
+import { store } from '../../../store';
 
 // These are the elements needed by this element.
 import './cart-item.js';
 
 // These are the reducers needed by this element.
-import { cartItemsSelector, cartTotalSelector } from '../../reducers/products.js';
+import { cartItemsSelector, cartTotalSelector } from '../../product/reducer';
 
 // These are the shared styles needed by this element.
-import { ButtonSharedStyles } from '../shared-styles-button.js';
-import { MWCSharedStyle } from '../shared-styles-mwc.js';
-import { MWCSharedStyleCustom } from '../shared-styles-mwc-custom.js';
+import { ButtonSharedStyles } from '../../../shared/styles/button';
+import { MWCSharedStyle } from '../../../shared/styles/mwc';
+import { MWCSharedStyleCustom } from '../../../shared/styles/mwc-custom';
 
 class CartItems extends connect(store)(LitElement) {
   static get properties() {

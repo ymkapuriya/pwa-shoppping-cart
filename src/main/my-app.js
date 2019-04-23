@@ -25,17 +25,17 @@ import {
   updateOffline,
   updateDrawerState,
   updateLayout
-} from '../actions/app.js';
+} from './actions.js';
 
 // These are the elements needed by this element.
 import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
-import { menuIcon } from './my-icons.js';
-import './snack-bar.js';
+import { menuIcon } from '../shared/styles/icons.js';
+import '../shared/components/snack-bar.js';
 
-import shop, { cartQuantitySelector } from '../reducers/products.js';
+import shop, { cartQuantitySelector } from '../modules/product/reducer';
 store.addReducers({
   shop
 });
@@ -49,7 +49,7 @@ class MyApp extends connect(store)(LitElement) {
       _snackbarOpened: { type: Boolean },
       _offline: { type: Boolean },
       _wideLayout: { type: Boolean },
-      _cartItems: { type: Number}
+      _cartItems: { type: Number }
     };
   }
 
@@ -188,11 +188,11 @@ class MyApp extends connect(store)(LitElement) {
           <button class="menu-btn" title="Menu" @click="${this._menuButtonClicked}">${menuIcon}</button>
           <div main-title>${this.appTitle}</div>
         </app-toolbar>
-
+      
         <!-- This gets hidden on a small screen-->
         <nav class="toolbar-list">
           <a ?selected="${this._page === 'home'}" href="/home">Home</a>
-          <a ?selected="${this._page === 'products'}" href="/products">Products</a>          
+          <a ?selected="${this._page === 'products'}" href="/products">Products</a>
           <a ?selected="${this._page === 'cart'}" href="/cart">
             Cart
             ${this._cartItems}
@@ -204,7 +204,7 @@ class MyApp extends connect(store)(LitElement) {
       <app-drawer .opened="${this._drawerOpened}" @opened-changed="${this._drawerOpenedChanged}">
         <nav class="drawer-list">
           <a ?selected="${this._page === 'home'}" href="/home">Home</a>
-          <a ?selected="${this._page === 'products'}" href="/products">Products</a>          
+          <a ?selected="${this._page === 'products'}" href="/products">Products</a>
           <a ?selected="${this._page === 'cart'}" href="/cart">
             Cart
             ${this._cartItems}
@@ -218,7 +218,7 @@ class MyApp extends connect(store)(LitElement) {
         <main-counter class="page" ?active="${this._page === 'counter'}"></main-counter>
         <main-cart class="page" ?active="${this._page === 'cart'}"></main-cart>
         <main-products class="page" ?active="${this._page === 'products'}"></main-products>
-        <my-view404 class="page" ?active="${this._page === 'view404'}"></my-view404>
+        <view-404 class="page" ?active="${this._page === 'view404'}"></view-404>
       </main>
       
       <footer>
@@ -235,7 +235,7 @@ class MyApp extends connect(store)(LitElement) {
     super();
     // To force all event listeners for gestures to be passive.
     // See https://www.polymer-project.org/3.0/docs/devguide/settings#setting-passive-touch-gestures
-    setPassiveTouchGestures(true);    
+    setPassiveTouchGestures(true);
   }
 
   firstUpdated() {

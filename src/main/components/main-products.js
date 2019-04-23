@@ -9,33 +9,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { html, css } from 'lit-element';
-import { PageViewElement } from '../page-view-element.js';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+import { PageViewElement } from '../page-view-element';
+import { connect } from 'pwa-helpers/connect-mixin';
 
 // mwc components
 import { Button } from '@material/mwc-button';
 import { Ripple } from '@material/mwc-ripple';
 
 // This element is connected to the Redux store.
-import { store } from '../../store.js';
+import { store } from '../../store';
 
 // These are the actions needed by this element.
-import { checkout } from '../../actions/products.js';
+import { checkout } from '../../modules/product/actions';
 
 // We are lazy loading its reducer.
-import shop, { cartQuantitySelector } from '../../reducers/products.js';
+import shop, { cartQuantitySelector } from '../../modules/product/reducer';
 store.addReducers({
   shop
 });
 
 // These are the elements needed by this element.
-import '../products/prod-list.js';
+import '../../modules/product/containers/prod-list';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from '../shared-styles.js';
-import { ButtonSharedStyles } from '../shared-styles-button.js';
-import { MWCSharedStyle } from '../shared-styles-mwc.js';
-import { MWCSharedStyleCustom } from '../shared-styles-mwc-custom.js';
+import { SharedStyles } from '../../shared/styles/shared-styles';
+import { ButtonSharedStyles } from '../../shared/styles/button';
+import { MWCSharedStyle } from '../../shared/styles/mwc';
+import { MWCSharedStyleCustom } from '../../shared/styles/mwc-custom';
 
 class MainViewProducts extends connect(store)(PageViewElement) {
   static get properties() {
