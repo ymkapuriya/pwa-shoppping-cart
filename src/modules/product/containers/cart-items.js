@@ -18,7 +18,7 @@ import { store } from '../../../store';
 import '../components/cart-item';
 
 // These are the reducers needed by this element.
-import { cartItemsSelector, cartTotalSelector } from '../../cart/reducer';
+import { cartItemsSelector, cartTotalSelector } from '../../product/reducer';
 
 // These are the shared styles needed by this element.
 import { ButtonSharedStyles } from '../../../shared/styles/button';

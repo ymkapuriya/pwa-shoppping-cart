@@ -14,7 +14,7 @@ import { LitElement, html, css } from 'lit-element';
 import { store } from '../../../store';
 
 // These are the actions needed by this element.
-import { removeFromCart } from '../../cart/actions';
+import { removeFromCart } from '../../product/actions';
 
 // This element is connected to the Redux store.
 import { removeFromCartIcon } from '../../../shared/styles/icons';
