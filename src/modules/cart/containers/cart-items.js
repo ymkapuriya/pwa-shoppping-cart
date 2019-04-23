@@ -15,7 +15,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { store } from '../../../store';
 
 // These are the elements needed by this element.
-import './cart-item.js';
+import '../components/cart-item';
 
 // These are the reducers needed by this element.
 import { cartItemsSelector, cartTotalSelector } from '../../product/reducer';

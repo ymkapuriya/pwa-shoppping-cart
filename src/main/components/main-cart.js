@@ -27,7 +27,7 @@ store.addReducers({
 });
 
 // These are the elements needed by this element.
-import '../../modules/cart/components/cart-items';
+import '../../modules/cart/containers/cart-items';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../../shared/styles/shared-styles';
